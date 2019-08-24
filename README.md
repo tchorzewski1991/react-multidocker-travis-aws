@@ -1,0 +1,1 @@
+# react-multidocker-travis-aws
