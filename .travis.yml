@@ -17,7 +17,7 @@ after_success:
   - docker build -t tchorzewski1991/react-multidocker-travis-aws-worker ./worker 
   - docker build -t tchorzewski1991/react-multidocker-travis-aws-nginx  ./nginx 
 
-  - echo "$DOCKER_PASSWORD" | docker-login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
   - docker push tchorzewski1991/react-multidocker-travis-aws-client
   - docker push tchorzewski1991/react-multidocker-travis-aws-server
