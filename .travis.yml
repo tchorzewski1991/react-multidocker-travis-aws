@@ -1,0 +1,25 @@
+language: generic 
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t tchorzewski1991/react-multidocker-travis-aws-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true tchorzewski1991/react-multidocker-travis-aws-test npm run test
+
+after_success:
+  - docker build -t tchorzewski1991/react-multidocker-travis-aws-client ./client 
+  - docker build -t tchorzewski1991/react-multidocker-travis-aws-server ./server 
+  - docker build -t tchorzewski1991/react-multidocker-travis-aws-worker ./worker 
+  - docker build -t tchorzewski1991/react-multidocker-travis-aws-nginx  ./nginx 
+
+  - echo "$DOCKER_PASSWORD" | docker-login -u "$DOCKER_ID" --password-stdin
+
+  - docker push tchorzewski1991/react-multidocker-travis-aws-client
+  - docker push tchorzewski1991/react-multidocker-travis-aws-server
+  - docker push tchorzewski1991/react-multidocker-travis-aws-worker
+  - docker push tchorzewski1991/react-multidocker-travis-aws-nginx
