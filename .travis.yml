@@ -23,3 +23,17 @@ after_success:
   - docker push tchorzewski1991/react-multidocker-travis-aws-server
   - docker push tchorzewski1991/react-multidocker-travis-aws-worker
   - docker push tchorzewski1991/react-multidocker-travis-aws-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: react-docker-travis-aws
+  env: ReactMultiDockerTravisAws-env
+  bucket_name: elasticbeanstalk-us-east-2-653534635463
+  bucket_path: react-multidocker-travis-aws
+  access_key_id: 
+    secure: "$AWS_ACCESS_KEY"
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+  on:
+    branch: master
