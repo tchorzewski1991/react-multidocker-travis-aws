@@ -37,3 +37,6 @@ deploy:
     secure: "$AWS_SECRET_KEY"
   on:
     branch: master
+
+notifications:
+  webhooks: https://aa17c3b7.ngrok.io/travisnotifs
