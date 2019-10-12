@@ -39,4 +39,4 @@ deploy:
     branch: master
 
 notifications:
-  webhooks: https://aa17c3b7.ngrok.io/travisnotifs
+  webhooks: https://d576be61.ngrok.io/travisnotifs
