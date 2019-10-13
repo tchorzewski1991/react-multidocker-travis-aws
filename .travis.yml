@@ -39,4 +39,4 @@ deploy:
     branch: master
 
 notifications:
-  webhooks: https://59561aef.ngrok.io/travisnotifs
+  webhooks: https://fe52lom4dj.execute-api.us-east-2.amazonaws.com/dev/notification
